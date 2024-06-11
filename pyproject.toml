@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "bq-py"
+version = "0.1.0"
+description = ""
+authors = ["Joar Wandborg <joar@wandborg.se>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+google-cloud-bigquery = "^3.24.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
