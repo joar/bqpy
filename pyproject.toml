@@ -1,13 +1,18 @@
 [tool.poetry]
-name = "bq-py"
+name = "bqpy"
 version = "0.1.0"
 description = ""
 authors = ["Joar Wandborg <joar@wandborg.se>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+"bq.py" = "bqpy.__main__:cli"
+
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">3.9"
 google-cloud-bigquery = "^3.24.0"
+click = "^8.1.7"
+tqdm = "^4.66.4"
 
 
 [build-system]
