@@ -4,9 +4,11 @@ version = "0.1.0"
 description = ""
 authors = ["Joar Wandborg <joar@wandborg.se>"]
 readme = "README.md"
+license = "LICENSE"
 
 [tool.poetry.scripts]
 "bq.py" = "bqpy.__main__:cli"
+"bqpy" = "bqpy.__main__:cli"
 
 [tool.poetry.dependencies]
 python = ">3.9"
