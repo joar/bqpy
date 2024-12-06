@@ -1,8 +1,9 @@
 #!/bin/python
 import csv
+import datetime
 import json
 import sys
-from typing import IO
+from typing import IO, Any
 
 import click
 import tqdm
@@ -37,6 +38,16 @@ def parse_query_argument(ctx, param, value):
     return value
 
 
+def json_default(value: Any):
+    """
+    Serialize datetime as RFC3339 string
+    """
+    if isinstance(value, datetime.datetime):
+        return value.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    else:
+        return value
+
+
 @cli.command()
 @click.help_option()
 @click.argument(
@@ -59,7 +70,7 @@ def query(query):
         for row in row_iter:
             if progress.total is None and row_iter.total_rows is not None:
                 progress.total = row_iter.total_rows
-            print(json.dumps(dict(row)))
+            print(json.dumps(dict(row), default=json_default))
             progress.update()
 
 if __name__ == "__main__":
